@@ -23,6 +23,7 @@ public class Album {
     String imageUrl;
 
     public Album(){}
+
     public Album(String title, String artist, int songCount, int length, String imageUrl){
         this.title = title;
         this.artist = artist;
@@ -32,22 +33,22 @@ public class Album {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public String getArtist() {
-        return artist;
+        return this.artist;
     }
 
     public int getSongCount() {
-        return songCount;
+        return this.songCount;
     }
 
     public int getLength() {
-        return length;
+        return this.length;
     }
 
     public String getImageUrl() {
-        return imageUrl;
+        return this.imageUrl;
     }
 }
