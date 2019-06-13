@@ -35,4 +35,5 @@ Add a new album to the database.
       - ```localhost:8080/albums```
       - ```localhost:8080/albums/new```
   
-  
+  ### Acknowledgments 
+  Recieved help from Will, Chai, Steve, and CodeFellows demo.
