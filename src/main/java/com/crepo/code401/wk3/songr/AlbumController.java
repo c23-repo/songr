@@ -4,15 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 public class AlbumController {
 
     @Autowired
     AlbumRepository albumRepository;
+    @Autowired
+    SongRepository songRepository;
+
 
     @GetMapping("/albums")
     public String getAllAlbums(Model m) {
@@ -24,6 +30,15 @@ public class AlbumController {
     @GetMapping("/albums/new")
     public String getAddAlbumForm() {
         return "albumForm";
+    }
+
+    @GetMapping("/songs/{albumID}/songGrabber")
+    public String songGrabber(@PathVariable long albumID, Model model) {
+        Album a = albumRepository.findById(albumID).get();
+        List<Song>foundSong = a.getSongs();
+        model.addAttribute("newSongs", foundSong);
+        return "albumInfo";
+
     }
 
     @PostMapping("/albums")
